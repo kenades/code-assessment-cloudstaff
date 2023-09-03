@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="search" id="search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" onclick="fnSearchContact(event)">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 justify-content-md-end">
+        <button type="button" class="btn btn-success" id="addContactBtn" data-bs-toggle="modal" data-bs-target="#addContactModal">Add Contact</button>
+    </div>
+    <div class="col">
+        <table class="table" id="contactsTbl">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">CompanyName</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody id="contactsTbody">
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addModalLabel">Add Contact</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formAddContact">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="FirstName" class="form-label">First name</label>
+                        <input type="text" name="FirstName" class="form-control" id="FirstName" aria-describedby="FirstName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="LastName" class="form-label">Last name</label>
+                        <input type="text" name="LastName" class="form-control" id="LastName" aria-describedby="LastName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="CompanyName" class="form-label">Company Name</label>
+                        <input type="text" name="CompanyName" class="form-control" id="CompanyName" aria-describedby="CompanyName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Mobile" class="form-label">Mobile</label>
+                        <input type="tel" name="Mobile" class="form-control" id="Mobile" aria-describedby="Mobile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email</label>
+                        <input type="email" name="Email" class="form-control" id="Email" aria-describedby="Email">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="fnAddContacts(event)">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Edit Modal-->
+<div class="modal fade" id="editContactModal" tabindex="-1" aria-labelledby="editContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Edit Contact</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="formEditContact">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="FirstName" class="form-label">First name</label>
+                        <input type="text" name="FirstName" class="form-control" id="editFirstName" aria-describedby="FirstName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="LastName" class="form-label">Last name</label>
+                        <input type="text" name="LastName" class="form-control" id="editLastName" aria-describedby="LastName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="CompanyName" class="form-label">Company Name</label>
+                        <input type="text" name="CompanyName" class="form-control" id="editCompanyName" aria-describedby="CompanyName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Mobile" class="form-label">Mobile</label>
+                        <input type="tel" name="Mobile" class="form-control" id="editMobile" aria-describedby="Mobile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email</label>
+                        <input type="email" name="Email" class="form-control" id="editEmail" aria-describedby="Email">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" onclick="fnEditContact(event)">Save</button>
+                </div>
+                <input type="hidden" id="editContactId"/>
+            </form>
+        </div>
+    </div>
+</div>
