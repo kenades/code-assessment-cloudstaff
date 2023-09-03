@@ -1,5 +1,11 @@
 ﻿@model ContactsCS.Models.Credentials
 <div class="row">
+    @if (ViewData["AuthMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <label>@ViewData["AuthMessage"]</label>
+        </div>
+    }
     <form id="formLogin" method="post" asp-controller="Login" asp-action="Login">
         <div class="form-group">
             <label for="username">Username</label>
@@ -10,14 +16,9 @@
             <input type="password" asp-For="Password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
         <div class="form-check">
-            <input class="form-check-input" asp-For="KeepSignedIn" type="checkbox" value="" id="keepsignedin" />
+            <input class="form-check-input" asp-For="KeepSignedIn" type="checkbox" value="" id="keepsignedin"/>
             <label class="form-check-label" for="keepsignedin"> Remember me </label>
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
-        
-        @if (ViewData["AuthMessage"] != null)
-        {
-            <label>@ViewData["AuthMessage"]</label>
-        }
     </form>
 </div>

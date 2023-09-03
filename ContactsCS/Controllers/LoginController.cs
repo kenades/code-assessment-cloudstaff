@@ -3,11 +3,13 @@ using System.Security.Claims;
 using ContactsCS.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContactsCS.Controllers
 {
     public class LoginController : Controller
     {
+        [AllowAnonymous]
         public IActionResult Login()
         {
             ClaimsPrincipal claims = HttpContext.User;
@@ -47,7 +49,7 @@ namespace ContactsCS.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewData["AuthMessage"] = "User not found!";
+            ViewData["AuthMessage"] = "Invalid credentials. Please try again.";
             return View();
         }
     }
